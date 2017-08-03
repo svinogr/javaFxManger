@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.Pane?>
+<SplitPane dividerPositions="0.5" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.controllers.Controller">
+    <items>
+        <TreeView fx:id="treeView" prefHeight="200.0" prefWidth="200.0">
+            <contextMenu>
+                <ContextMenu>
+                    <items>
+                        <MenuItem fx:id="menuCreateFolder" mnemonicParsing="false" text="Создать папку" />
+                        <MenuItem fx:id="menuCreateFile" mnemonicParsing="false"  text="Создать файл" />
+                        <MenuItem fx:id="menuDeleteItem" mnemonicParsing="false" text="Удалить" />
+                        <MenuItem fx:id="menuEditItem" mnemonicParsing="false" text="Изменить" />
+                    </items>
+                </ContextMenu>
+            </contextMenu>
+
+        </TreeView>
+        <Pane prefHeight="200.0" prefWidth="200.0">
+            <children>
+                <ImageView fitHeight="101.0" fitWidth="187.0" layoutX="7.0" layoutY="94.0" pickOnBounds="true" preserveRatio="true" />
+                <Label layoutX="14.0" layoutY="14.0" text="Размер:" />
+                <Label layoutX="14.0" layoutY="31.0" text="Путь:" />
+                <Label layoutX="14.0" layoutY="48.0" text="Дата создания:" />
+                <Label fx:id="sizeL" layoutX="114.0" layoutY="14.0" />
+                <Label fx:id="pathL" layoutX="114.0" layoutY="31.0" />
+                <Label fx:id="dateL" layoutX="114.0" layoutY="48.0" />
+            </children>
+        </Pane>
+    </items>
+</SplitPane>
