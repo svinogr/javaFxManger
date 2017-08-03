@@ -48,7 +48,7 @@ public class TaskGetChildren extends Task<Void> {
 
     @Override
     protected Void call() throws Exception {
-        for (int i = 0; i <= 3; i++) {
+        for (int i = 0; i <= 15; i++) {
             try {
                 Thread.sleep(100);
             } catch (InterruptedException e) {

@@ -13,7 +13,7 @@
                         <MenuItem fx:id="menuCreateFolder" mnemonicParsing="false" text="Создать папку" />
                         <MenuItem fx:id="menuCreateFile" mnemonicParsing="false"  text="Создать файл" />
                         <MenuItem fx:id="menuDeleteItem" mnemonicParsing="false" text="Удалить" />
-                        <MenuItem fx:id="menuEditItem" mnemonicParsing="false" text="Изменить" />
+                        <MenuItem fx:id="menuEditItem" mnemonicParsing="false" text="Переименовать" />
                     </items>
                 </ContextMenu>
             </contextMenu>

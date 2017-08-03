@@ -7,7 +7,7 @@
       fx:controller="sample.controllers.ModalEditController" minHeight="-Infinity" minWidth="-Infinity" prefHeight="99.0" prefWidth="180.0">
     <children>
         <TextField fx:id="textField" alignment="CENTER" layoutX="14.0" layoutY="14.0"/>
-        <Button fx:id="btnSave" layoutX="14.0" layoutY="58.0" onAction="#save" mnemonicParsing="false" text="Сохранить"/>
+        <Button defaultButton="true" fx:id="btnSave" layoutX="14.0" layoutY="58.0" onAction="#save" mnemonicParsing="false" text="Сохранить"/>
         <Button fx:id="btnCancel" layoutX="111.0" layoutY="58.0" onAction="#cancel" mnemonicParsing="false" text="Отмена"/>
     </children>
 </Pane>

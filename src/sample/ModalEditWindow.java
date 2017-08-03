@@ -1,8 +1,11 @@
 package sample;
 
+import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.Window;
@@ -20,10 +23,19 @@ public class ModalEditWindow {
             loader = new FXMLLoader();
             loader.setLocation(getClass().getResource("edit.fxml"));
             root = loader.load();
+            Scene scene = new Scene(root);
             stage.setTitle("Редактирование");
-            stage.setScene(new Scene(root));
+            stage.setScene(scene);
             stage.initModality(Modality.WINDOW_MODAL);
             stage.initOwner(p.getScene().getWindow());
+            scene.addEventHandler(KeyEvent.KEY_PRESSED, new EventHandler<KeyEvent>() {
+                @Override
+                public void handle(KeyEvent event) {
+                    if(event.getCode()== KeyCode.ESCAPE)
+                        stage.close();
+
+                }
+            });
 
         } catch (IOException e) {
             e.printStackTrace();
