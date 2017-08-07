@@ -48,13 +48,13 @@ public class TaskGetChildren extends Task<Void> {
 
     @Override
     protected Void call() throws Exception {
-        for (int i = 0; i <= 15; i++) {
+        for (int i = 0; i <= 10; i++) {
             try {
                 Thread.sleep(100);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
-            updateProgress(i, 20);
+            updateProgress(i, 10);
         }
         Container selectedNodeValue = selectedNode.getValue();
         ObservableList<TreeItem<Container>> children = selectedNode.getChildren();

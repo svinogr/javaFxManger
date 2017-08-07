@@ -40,7 +40,6 @@ public class Controller {
         System.out.println("init");
         File[] rootFiles = File.listRoots();
         ServiceFile serviceFile = new ServiceFileImpl();
-        System.out.println(rootFiles[0].getAbsolutePath());
         List<Container> fileContainers = serviceFile.getDisk(rootFiles);
         initTreeViewRoot(fileContainers);
         initMenu();
@@ -65,7 +64,7 @@ public class Controller {
             TreeItem<Container> selectedNode = (TreeItem<Container>) newValue;
             initPropertyContainer(selectedNode);
             if (selectedNode.getValue().isDirectory()) {
-                ServiceGuiImpl serviceGui = new ServiceGuiImpl();
+                ServiceUpdateUi serviceGui = new ServiceUpdateUiImpl();
                 serviceGui.addItemsToNode(newValue);
             }
         });
@@ -89,7 +88,9 @@ public class Controller {
     }
 
     private void initPropertyContainer(TreeItem<Container> selectedNode) {
-        sizeL.setText(String.valueOf(selectedNode.getValue().getSize()) + " " + BYTE);
+        if(selectedNode.getValue().isDirectory()){
+            sizeL.setText("DIR");
+        } else sizeL.setText(String.valueOf(selectedNode.getValue().getSize()) + " " + BYTE);
         pathL.setText(selectedNode.getValue().getUrl());
         dateL.setText(String.valueOf(selectedNode.getValue().getDate()));
     }

@@ -7,4 +7,5 @@ public interface ServiceUpdateUi {
     void deleteItem(TreeItem<Container> treeItem);
     void addItem(TreeItem<Container> treeItem, Container container);
     void changeItem(TreeItem<Container> selected, Container container);
+    void addItemsToNode(Object node);
 }

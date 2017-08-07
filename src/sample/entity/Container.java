@@ -29,6 +29,7 @@ public abstract class Container  implements Containerable {
         File file = new File(path);
             this.name = file.getName();
             this.url = file.getAbsolutePath();
+            //this.url = file.getPath();
             this.size = file.length();
             this.date = new Date(file.lastModified());
             this.directory = file.isDirectory();

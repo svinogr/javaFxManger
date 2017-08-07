@@ -5,6 +5,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.control.TreeItem;
 import javafx.stage.Stage;
+import sample.ModalMessageWindow;
 import sample.entity.Container;
 import sample.entity.FileContainer;
 import sample.entity.FolderContainer;
@@ -13,7 +14,10 @@ import sample.service.ServiceMenuImpl;
 import sample.service.ServiceUpdateUi;
 import sample.service.ServiceUpdateUiImpl;
 
+import java.io.File;
+
 public class ModalEditController {
+    private static final String MESSAGE = "Невозможно произвести операцию. Проверьте имя";
     @FXML
     TextField textField;
     @FXML
@@ -41,7 +45,7 @@ public class ModalEditController {
     public void save() {
         Container selectedContainer = selectedItem.getValue();
         String location;
-        String name = "\\" + textField.getText();
+        String name = File.separator + textField.getText();
         ServiceUpdateUi serviceUpdateUi = new ServiceUpdateUiImpl();
 
         if (selectedContainer.isDirectory()) {
@@ -60,28 +64,40 @@ public class ModalEditController {
                     serviceUpdateUi.changeItem(selectedItem, container);
                     createOrChangeDir = false;
                     cancel();
-                    //TODO вывод в случае ошибки
-                }
+
+                } else errorMessage();
+
+
             } else if (serviceMenu.createFolder(fullOPath)) {
                 Container container = new FolderContainer(fullOPath);
                 serviceUpdateUi.addItem(selectedItem, container);
                 createOrChangeDir = false;
                 cancel();
-            } //TODO вывод в случае ошибки
+            } else errorMessage();
         } else if (editMode) {
             if (serviceMenu.editName(selectedContainer.getUrl(), fullOPath)) {
                 Container container = new FileContainer(fullOPath);
-                serviceUpdateUi.changeItem(selectedItem,container );
+                serviceUpdateUi.changeItem(selectedItem, container);
                 cancel();
-                //TODO вывод в случае ошибки
-            }
+
+            } else errorMessage();
         } else if (serviceMenu.createFile(fullOPath)) {
             Container container = new FileContainer(fullOPath);
             serviceUpdateUi.addItem(selectedItem, container);
             cancel();
-        } //TODO вывод в случае ошибки
+        } else {
+            errorMessage();
+        }
 
 
+    }
+
+    private void errorMessage() {
+        ModalMessageWindow modalMessageWindow = new ModalMessageWindow();
+        modalMessageWindow.init(textField.getScene().getWindow());
+        ModalMessageController controller = modalMessageWindow.getLoader().getController();
+        controller.label.setText(MESSAGE);
+        modalMessageWindow.show();
     }
 
 

@@ -17,14 +17,12 @@ public class ServiceMenuImpl implements ServiceMenu {
     @Override
     public boolean createFile(String path) {
         File file = new File(path);
-        //TODO если есть уже
         try {
             return file.createNewFile();
         } catch (IOException e) {
             e.printStackTrace();
             return false;
         }
-
     }
 
     @Override
@@ -32,9 +30,8 @@ public class ServiceMenuImpl implements ServiceMenu {
         File file = new File(path);
         File[] files = file.listFiles();
 
-        if(files!=null){
-            for (File file1:files){
-                System.out.println(file1.getAbsolutePath());
+        if (files != null) {
+            for (File file1 : files) {
                 delete(file1.getAbsolutePath());
             }
         }
@@ -43,10 +40,10 @@ public class ServiceMenuImpl implements ServiceMenu {
     }
 
     @Override
-    public boolean editName(String oldName, String newName ) {
+    public boolean editName(String oldName, String newName) {
         File file = new File(oldName);
-        if(file.exists()){
-          return   file.renameTo(new File(newName));
+        if (file.exists()) {
+            return file.renameTo(new File(newName));
 
         }
         return false;

@@ -8,6 +8,7 @@ import javafx.scene.control.TreeItem;
 import javafx.scene.image.ImageView;
 import javafx.util.Duration;
 import sample.entity.Container;
+import sample.task.TaskGetChildren;
 
 public class ServiceUpdateUiImpl implements ServiceUpdateUi {
     @Override
@@ -48,4 +49,12 @@ public class ServiceUpdateUiImpl implements ServiceUpdateUi {
                 })).build().play();
 
     }
+
+    @Override
+    public void addItemsToNode(Object node) {
+            TaskGetChildren task  = new TaskGetChildren(node);
+            Thread thread = new Thread(task);
+            thread.start();
+        }
+
 }

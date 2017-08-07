@@ -12,7 +12,7 @@ import javafx.stage.Window;
 
 import java.io.IOException;
 
-public class ModalEditWindow {
+public class ModalMessageWindow {
     private Parent root;
     private FXMLLoader loader;
     private Stage stage;
@@ -21,7 +21,7 @@ public class ModalEditWindow {
         stage = new Stage();
         try {
             loader = new FXMLLoader();
-            loader.setLocation(getClass().getResource("edit.fxml"));
+            loader.setLocation(getClass().getResource("message.fxml"));
             root = loader.load();
             Scene scene = new Scene(root);
             stage.setScene(scene);

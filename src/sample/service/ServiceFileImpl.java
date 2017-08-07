@@ -57,6 +57,7 @@ public class ServiceFileImpl implements ServiceFile {
     private void getContainer(Container container, File file) {
         container.setName(file.getName());
         container.setUrl(file.getAbsolutePath());
+        //container.setUrl(file.getPath());
         container.setSize(file.length());
         container.setDate(new Date(file.lastModified()));
         container.setDirectory(file.isDirectory());
