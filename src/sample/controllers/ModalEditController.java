@@ -5,7 +5,6 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.control.TreeItem;
 import javafx.stage.Stage;
-import sample.ModalMessageWindow;
 import sample.entity.Container;
 import sample.entity.FileContainer;
 import sample.entity.FolderContainer;
@@ -13,11 +12,12 @@ import sample.service.ServiceMenu;
 import sample.service.ServiceMenuImpl;
 import sample.service.ServiceUpdateUi;
 import sample.service.ServiceUpdateUiImpl;
+import sample.view.windows.ModalMessageWindow;
 
 import java.io.File;
 
 public class ModalEditController {
-    private static final String MESSAGE = "Невозможно произвести операцию. Проверьте имя";
+    private static final String MESSAGE = "Невозможно произвести операцию. Проверьте имя!";
     @FXML
     TextField textField;
     @FXML
@@ -28,12 +28,12 @@ public class ModalEditController {
     private boolean editMode;
     private boolean createOrChangeDir;
 
-    public void setSelectedItem(TreeItem<Container> selectedItem) {
+    void setSelectedItem(TreeItem<Container> selectedItem) {
         this.selectedItem = selectedItem;
 
     }
 
-    public void setEditMode(boolean editMode) {
+    void setEditMode(boolean editMode) {
         this.editMode = editMode;
         if (editMode) {
             textField.setText(selectedItem.getValue().getName());
@@ -115,7 +115,7 @@ public class ModalEditController {
         return createOrChangeDir;
     }
 
-    public void setCreateOrChangeDir(boolean createOrChangeDir) {
+    void setCreateOrChangeDir(boolean createOrChangeDir) {
         this.createOrChangeDir = createOrChangeDir;
     }
 }

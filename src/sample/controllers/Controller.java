@@ -2,10 +2,9 @@ package sample.controllers;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.scene.control.*;
 import javafx.scene.image.ImageView;
-import sample.ModalEditWindow;
+import sample.view.windows.ModalEditWindow;
 import sample.entity.Container;
 import sample.entity.DriveContainer;
 import sample.service.*;
@@ -71,7 +70,7 @@ public class Controller {
     }
 
 
-    public void initMenu() {
+    private void initMenu() {
         menuCreateFolder.setOnAction(event -> {
             menuAction(event);
         });
@@ -107,7 +106,6 @@ public class Controller {
                 if(serviceMenu.delete(selectedItem.getValue().getUrl())){
                     ServiceUpdateUi serviceUpdateUi = new ServiceUpdateUiImpl();
                     serviceUpdateUi.deleteItem(selectedItem);
-                    //TODO обработать ошибку
                 }
                 break;
             case "menuCreateFile":

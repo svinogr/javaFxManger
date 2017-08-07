@@ -1,6 +1,5 @@
-package sample;
+package sample.view.windows;
 
-import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -27,13 +26,10 @@ public class ModalEditWindow {
             stage.setScene(scene);
             stage.initModality(Modality.WINDOW_MODAL);
             stage.initOwner(p.getScene().getWindow());
-            scene.addEventHandler(KeyEvent.KEY_PRESSED, new EventHandler<KeyEvent>() {
-                @Override
-                public void handle(KeyEvent event) {
-                    if(event.getCode()== KeyCode.ESCAPE)
-                        stage.close();
+            scene.addEventHandler(KeyEvent.KEY_PRESSED, event -> {
+                if(event.getCode()== KeyCode.ESCAPE)
+                    stage.close();
 
-                }
             });
 
         } catch (IOException e) {
