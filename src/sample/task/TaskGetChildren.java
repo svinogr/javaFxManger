@@ -19,7 +19,6 @@ public class TaskGetChildren extends Task<Void> {
     private Node graphic;
 
     public TaskGetChildren(Object newValue) {
-        System.out.println(newValue);
         selectedNode = (TreeItem<Container>) newValue;
         progressIndicator = new ProgressBar();
         progressIndicator.setPrefSize(16, 16);

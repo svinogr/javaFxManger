@@ -36,7 +36,6 @@ public class Controller {
 
     @FXML
     void initialize() {
-        System.out.println("init");
         File[] rootFiles = File.listRoots();
         ServiceFile serviceFile = new ServiceFileImpl();
         List<Container> fileContainers = serviceFile.getDisk(rootFiles);
@@ -118,7 +117,6 @@ public class Controller {
                 modalEditWindow.show();
                 break;
             case "menuCreateFolder":
-                System.out.println("menuCreateFolder");
                 modalEditWindow = new ModalEditWindow();
                 modalEditWindow.init(treeView.getScene().getWindow());
                 modalEditController = modalEditWindow.getLoader().getController();
@@ -128,7 +126,6 @@ public class Controller {
                 modalEditWindow.show();
                 break;
             case "menuEditItem":
-                System.out.println("menuEditItem");
                 editMode = true;
                 modalEditWindow = new ModalEditWindow();
                 modalEditWindow.init(treeView.getScene().getWindow());

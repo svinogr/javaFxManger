@@ -19,7 +19,6 @@ public class ServiceFileImpl implements ServiceFile {
     @Override
     public List<Container> getContainers(File[] files) {
         List<Container> containers = null;
-        System.out.println(files.length+" "+ files);
         if (files.length != 0) {
             containers = new ArrayList<>();
             for (File file : files) {
