@@ -62,7 +62,6 @@ public class ModalEditController {
         if (createOrChangeDir) {
             if (editMode) {
                 if (serviceMenu.editName(selectedContainer.getUrl(), selectedItem.getParent().getValue().getUrl() + name)) {
-                    System.out.println(fullOPath);
                     Container container = new FolderContainer(selectedItem.getParent().getValue().getUrl() + name);
                     serviceUpdateUi.changeItem(selectedItem, container);
                     createOrChangeDir = false;
@@ -71,7 +70,6 @@ public class ModalEditController {
                 } else errorMessage();
 
             } else if (serviceMenu.createFolder(fullOPath)) {
-                System.out.println(fullOPath);
                 Container container = new FolderContainer(fullOPath);
                 if(isFile){
                     selectedItem = selectedItem.getParent();
@@ -82,14 +80,12 @@ public class ModalEditController {
             } else errorMessage();
         } else if (editMode) {
             if (serviceMenu.editName(selectedContainer.getUrl(), fullOPath)) {
-                System.out.println(fullOPath);
                 Container container = new FileContainer(fullOPath);
                 serviceUpdateUi.changeItem(selectedItem, container);
                 cancel();
 
             } else errorMessage();
         } else if (serviceMenu.createFile(fullOPath)) {
-            System.out.println(fullOPath);
             Container container = new FileContainer(fullOPath);
             if(isFile){
                 selectedItem = selectedItem.getParent();
@@ -109,12 +105,10 @@ public class ModalEditController {
         modalMessageWindow.show();
     }
 
-
     public void cancel() {
         Stage stage = (Stage) btnCancel.getScene().getWindow();
         stage.close();
     }
-
 
     @FXML
     void initialize() {

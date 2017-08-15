@@ -57,6 +57,7 @@ public class TaskGetChildren extends Task<Void> {
         }
         Container selectedNodeValue = selectedNode.getValue();
         ObservableList<TreeItem<Container>> children = selectedNode.getChildren();
+        children.clear();
         String urlFile = selectedNodeValue.getUrl();
         File[] fileOfNode = new File(urlFile).listFiles();
         if (fileOfNode != null && fileOfNode.length == 0) {

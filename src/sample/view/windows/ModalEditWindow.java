@@ -29,7 +29,6 @@ public class ModalEditWindow {
             scene.addEventHandler(KeyEvent.KEY_PRESSED, event -> {
                 if(event.getCode()== KeyCode.ESCAPE)
                     stage.close();
-
             });
 
         } catch (IOException e) {

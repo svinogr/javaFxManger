@@ -29,7 +29,6 @@ public abstract class Container  implements Containerable {
         File file = new File(path);
             this.name = file.getName();
             this.url = file.getAbsolutePath();
-            //this.url = file.getPath();
             this.size = file.length();
             this.date = new Date(file.lastModified());
             this.directory = file.isDirectory();
@@ -71,9 +70,7 @@ public abstract class Container  implements Containerable {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-
         Container that = (Container) o;
-
         return url.equals(that.url);
 
     }

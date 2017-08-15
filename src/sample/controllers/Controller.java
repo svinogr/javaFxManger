@@ -68,7 +68,6 @@ public class Controller {
         });
     }
 
-
     private void initMenu() {
         menuCreateFolder.setOnAction(event -> {
             menuAction(event);
