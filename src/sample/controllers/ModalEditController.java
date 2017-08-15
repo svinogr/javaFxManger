@@ -47,12 +47,14 @@ public class ModalEditController {
         String location;
         String name = File.separator + textField.getText();
         ServiceUpdateUi serviceUpdateUi = new ServiceUpdateUiImpl();
+        boolean isFile = false;
 
         if (selectedContainer.isDirectory()) {
             location = selectedContainer.getUrl();
 
         } else {
             location = selectedItem.getParent().getValue().getUrl();
+            isFile = true;
         }
 
         String fullOPath = location + name;
@@ -60,6 +62,7 @@ public class ModalEditController {
         if (createOrChangeDir) {
             if (editMode) {
                 if (serviceMenu.editName(selectedContainer.getUrl(), selectedItem.getParent().getValue().getUrl() + name)) {
+                    System.out.println(fullOPath);
                     Container container = new FolderContainer(selectedItem.getParent().getValue().getUrl() + name);
                     serviceUpdateUi.changeItem(selectedItem, container);
                     createOrChangeDir = false;
@@ -67,29 +70,35 @@ public class ModalEditController {
 
                 } else errorMessage();
 
-
             } else if (serviceMenu.createFolder(fullOPath)) {
+                System.out.println(fullOPath);
                 Container container = new FolderContainer(fullOPath);
+                if(isFile){
+                    selectedItem = selectedItem.getParent();
+                }
                 serviceUpdateUi.addItem(selectedItem, container);
                 createOrChangeDir = false;
                 cancel();
             } else errorMessage();
         } else if (editMode) {
             if (serviceMenu.editName(selectedContainer.getUrl(), fullOPath)) {
+                System.out.println(fullOPath);
                 Container container = new FileContainer(fullOPath);
                 serviceUpdateUi.changeItem(selectedItem, container);
                 cancel();
 
             } else errorMessage();
         } else if (serviceMenu.createFile(fullOPath)) {
+            System.out.println(fullOPath);
             Container container = new FileContainer(fullOPath);
+            if(isFile){
+                selectedItem = selectedItem.getParent();
+            }
             serviceUpdateUi.addItem(selectedItem, container);
             cancel();
         } else {
             errorMessage();
         }
-
-
     }
 
     private void errorMessage() {

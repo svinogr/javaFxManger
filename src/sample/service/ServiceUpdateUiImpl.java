@@ -30,7 +30,7 @@ public class ServiceUpdateUiImpl implements ServiceUpdateUi {
                     @Override
                     public void handle(ActionEvent t) {
                         treeItem.getChildren().add(newItem);
-                        treeItem.setExpanded(true);
+                        //treeItem.setExpanded(true);
                     }
                 })).build().play();
     }

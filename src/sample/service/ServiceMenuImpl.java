@@ -9,7 +9,6 @@ public class ServiceMenuImpl implements ServiceMenu {
     @Override
     public boolean createFolder(String path) {
         File file = new File(path);
-        //TODO если есть уже
         return file.mkdir();
 
     }
